@@ -25,6 +25,7 @@ export class InfoTorneoComponent implements OnInit {
   btniscrivi:boolean;
   btntabellone:boolean;
   assegnadelegato:boolean;
+  modificaTorneo:boolean;
 
   ELEMENT_DATA !: Squadra[];
   displayedColumns: string[] = ['index','nomeTeam','atleta1','atleta2','entrypoints'];
@@ -37,6 +38,7 @@ export class InfoTorneoComponent implements OnInit {
     this.btniscrivi=true;
     this.btntabellone=true;
     this.assegnadelegato=true;
+    this.modificaTorneo=false;
 
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
     if(this.cookieService.get("ruolo")=="Atleta" ||this.cookieService.get("ruolo")=="Delegato" || this.cookieService.get("ruolo")=="Admin")this.CheckAutorizzazione();
@@ -172,6 +174,7 @@ export class InfoTorneoComponent implements OnInit {
                   obj=>{
                     if(obj)this.btntabellone=true;
                     else {
+                      this.modificaTorneo=true;
                       //CONTROLLARE SE E' GIA STATO CREATO UN TABELLONE
                       //true presente
                       //false ancora da creare
@@ -212,6 +215,9 @@ export class InfoTorneoComponent implements OnInit {
 
   VisualizzaPartite(){
     this.Router.navigate(['/OutputPartite/'+this.id]);
+  }
+  ModificaTorneo(){
+    this.Router.navigate(['/ModificaTorneo/'+this.id]);
   }
 
   CreaTabellone(){

@@ -1,5 +1,6 @@
 export class Torneo{
     idTorneo!: number;
+    idTipoTorneo!:number;
     titolo!: string;
     nomeSocieta!: string;
     tipoTorneo!: string;

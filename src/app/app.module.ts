@@ -33,6 +33,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AddImpiantiComponent } from './components/add-impianti/add-impianti.component';
+import { ModificaTorneoComponent } from './components/modifica-torneo/modifica-torneo.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AddImpiantiComponent } from './components/add-impianti/add-impianti.com
     GestisciPartitaComponent,
     NewPasswordComponent,
     AddImpiantiComponent,
+    ModificaTorneoComponent,
 
   ],
   imports: [

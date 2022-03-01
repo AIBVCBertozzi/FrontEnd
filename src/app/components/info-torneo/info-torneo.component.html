@@ -49,6 +49,11 @@
                         </div>
                     </div>
                     <div class="row my-3 justify-content-between">
+                        <div class="col-12 d-grid gap-2">
+                            <input type="button" id="modifica" class="btn btn-primary btn-block" [hidden]="modificaTorneo" (click)="ModificaTorneo()" value="Modifica Torneo" />
+                        </div>
+                    </div>
+                    <div class="row my-3 justify-content-between">
                         <div class="col-3">
                             <input type="button" id="back" class="btn btn-secondary" (click)="Back();" value="Indietro" />
                         </div>

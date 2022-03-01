@@ -17,6 +17,7 @@ import { InfoPartitaComponent } from './components/info-partita/info-partita.com
 import { GestisciPartitaComponent } from './components/gestisci-partita/gestisci-partita.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { AddImpiantiComponent } from './components/add-impianti/add-impianti.component';
+import { ModificaTorneoComponent } from './components/modifica-torneo/modifica-torneo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'GestisciPartita/:id/Partita/:partita', component: GestisciPartitaComponent },
   { path: 'newpassword', component: NewPasswordComponent },
   { path: 'AddImpianto', component: AddImpiantiComponent },
-  
+  { path: 'ModificaTorneo/:id', component: ModificaTorneoComponent },
   { path: '', component: AppComponent }
 ];
 
