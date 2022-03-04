@@ -28,11 +28,12 @@ export class ModificaTorneoComponent implements OnInit {
   Info:any;
   elements:any;
   options = { year: 'numeric', month: 'numeric', day: 'numeric' }as const;//opzioni formato data
+  sessocheck!:string;
 
   constructor(private TorneoAPIService: TorneoAPIService, private SocietaApiService: SocietaApiService, private router: Router, private activatedRoute: ActivatedRoute, private cookieService: CookieService, private navbarService: NavbarService, private formBuilder: FormBuilder) {
     
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
-
+    this.sessocheck='F';
     this.formrcrea = this.formBuilder.group({
       tipoTorneo: ['', Validators.required],
       titolo: ['', Validators.required],
@@ -105,7 +106,6 @@ export class ModificaTorneoComponent implements OnInit {
   }
 
   setData(){
-    //TIPO SERVE ID NON IL TIPO bisogna aggiungerlo al infotorneo
     this.formrcrea = this.formBuilder.group({
       tipoTorneo: [this.Info[0]["idTipoTorneo"], Validators.required],
       titolo: [this.Info[0]["titolo"], Validators.required],
@@ -117,7 +117,7 @@ export class ModificaTorneoComponent implements OnInit {
       dataFine: [new Date(this.Info[0]["dataFine"]).toLocaleString('en-CA',this.options), Validators.required],
       outdoor: [this.Info[0]["outdoor"], Validators.required],
       riunioneTecnica: [this.Info[0]["riunioneTecnica"], Validators.required],
-      genere: [this.Info[0]["genere"], Validators.required],
+      genere: [this.Info[0]["gender"], Validators.required],
       numMaxTeamMainDraw: [this.Info[0]["numMaxTeamMainDraw"], Validators.required],
       numMaxTeamQualifiche: [this.Info[0]["numMaxTeamQualifiche"], Validators.required],
       numTeamQualificati: [this.Info[0]["numTeamQualificati"], Validators.required],
@@ -167,16 +167,6 @@ export class ModificaTorneoComponent implements OnInit {
           body += " \"" + key + "\": \"" + this.formrcrea.controls[key].value + "\",\r\n";
     });
     body += " \"idSocieta\": \"" + parseInt(this.cookieService.get('id')) + "\"\r\n}";
-    //console.log(body);
-    //CREA TORNEO
-    this.TorneoAPIService.CreaTorneo(this.cookieService.get('token'), body).subscribe(
-      obj => {
-        this.Info = obj;
-        //torno ai tornei
-        this.router.navigate(['OutputTornei/L1']);
-      },
-      error => {
-        console.log("error", error);
-      })
+    console.log("Body",body);
   }
 }
