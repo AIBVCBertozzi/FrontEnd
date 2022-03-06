@@ -133,6 +133,16 @@ export class TorneoAPIService {
     }; 
     return this.HttpClient.post<Info>(environment.apiURL+"api/v1/tornei/CreaTorneo",body,httpOptions)
   }
+  public ModificaTorneo(token:string,body:string):Observable<Info>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json; charset=UTF-8",
+        'Accept':  'application/json',
+        'Authorization':'Bearer '+token
+      })
+    }; 
+    return this.HttpClient.put<Info>(environment.apiURL+"api/v1/tornei/ModificaTorneo",body,httpOptions)
+  }
   //AUTORIZZA TORNEO
   public AutorizzaTorneo(token:string,idTorneo:string,stato:boolean):Observable<string>{
     const httpOptions = {

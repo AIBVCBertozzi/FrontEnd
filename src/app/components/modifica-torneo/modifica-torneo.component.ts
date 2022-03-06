@@ -149,7 +149,7 @@ export class ModificaTorneoComponent implements OnInit {
   }
 
   Crea_Click() {
-    let body = "{\r\n";
+    let body = "{\"idTorneo\": \""+this.id+"\",	\r\n";
 
     Object.keys(this.formrcrea.controls).forEach(key => {
       //scorro tutti gli input e creo il body della chiamata
@@ -167,6 +167,16 @@ export class ModificaTorneoComponent implements OnInit {
           body += " \"" + key + "\": \"" + this.formrcrea.controls[key].value + "\",\r\n";
     });
     body += " \"idSocieta\": \"" + parseInt(this.cookieService.get('id')) + "\"\r\n}";
-    console.log("Body",body);
+    //console.log("Body",body);
+    //CREA TORNEO
+    this.TorneoAPIService.ModificaTorneo(this.cookieService.get('token'), body).subscribe(
+      obj => {
+        this.Info = obj;
+        //torno ai tornei
+        this.router.navigate(['OutputTornei/L1/false']);
+      },
+      error => {
+        console.log("error", error);
+      })
   }
 }

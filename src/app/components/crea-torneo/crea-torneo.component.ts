@@ -129,7 +129,7 @@ export class CreaTorneoComponent implements OnInit {
       obj => {
         this.Info = obj;
         //torno ai tornei
-        this.router.navigate(['OutputTornei/L1']);
+        this.router.navigate(['OutputTornei/L1/false']);
       },
       error => {
         console.log("error", error);
