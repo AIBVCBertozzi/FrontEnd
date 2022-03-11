@@ -38,7 +38,9 @@ export class InfoTorneoComponent implements OnInit {
     this.btniscrivi=true;
     this.btntabellone=true;
     this.assegnadelegato=true;
-    this.modificaTorneo=false;
+    this.modificaTorneo=true;
+    if(this.cookieService.get("ruolo")=="Societa" ||this.cookieService.get("ruolo")=="Admin")this.modificaTorneo=false;
+    
 
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
     if(this.cookieService.get("ruolo")=="Atleta" ||this.cookieService.get("ruolo")=="Delegato" || this.cookieService.get("ruolo")=="Admin")this.CheckAutorizzazione();
